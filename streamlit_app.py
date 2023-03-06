@@ -22,4 +22,4 @@ st.dataframe(fruits_to_show)
 
 #New Section to display fruitvice api response
 fruityvice_response = rq.get("https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruityvice_response)
+st.text(fruityvice_response)
