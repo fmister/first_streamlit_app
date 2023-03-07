@@ -21,7 +21,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 st.dataframe(fruits_to_show)
 
-
 fruit_choice = st.text_input('What fruit would you like information about?','Kiwi')
 st.write('The user entered ', fruit_choice)
 
@@ -29,12 +28,10 @@ st.write('The user entered ', fruit_choice)
 fruityvice_response = rq.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 #st.text(fruityvice_response.json()) #just writes the data to the screen
 
-
 #take the json version of the response and normalize it
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 #output it the screen as a table
 st.dataframe(fruityvice_normalized)
-
 
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
@@ -45,3 +42,5 @@ st.dataframe(my_data_rows)
 
 add_my_fruit = st.text_input("What fruit would you like to add?")
 st.write('Thanks for adding ', add_my_fruit)
+
+my_cur.execute("insert into FRUIT_LOAD_LIST values ('from streamlit')")
