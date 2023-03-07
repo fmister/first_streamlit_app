@@ -30,7 +30,7 @@ st.header('Fruityvice Fruit Advice!')
 try:
   fruit_choice = st.text_input('What fruit would you like information about?')
   if not fruit_choice:
-      stremlit.error("Please select a fruit to get information.")
+      st.error("Please select a fruit to get information.")
   else:
     fruityvice_response = rq.get("https://fruityvice.com/api/fruit/" + fruit_choice)
     fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
