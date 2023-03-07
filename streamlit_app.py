@@ -22,6 +22,9 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 st.dataframe(fruits_to_show)
 
+
+
+
 #New Section to display fruitvice api response
 st.header('Fruityvice Fruit Advice!')
 try:
@@ -32,6 +35,7 @@ try:
     fruityvice_response = rq.get("https://fruityvice.com/api/fruit/" + fruit_choice)
     fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
     st.dataframe(fruityvice_normalized)
+
 except URLError as e:
     st.error()
     
